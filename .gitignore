@@ -1,0 +1,7 @@
+.atllbuild
+*.d
+*.o
+*.sublime-workspace
+bin/
+user/
+

@@ -1,0 +1,45 @@
+(package
+  :name "FastString"
+
+  ;; :external-packages [
+  ;;   {
+  ;;     :url "https://github.com/AnarchyTools/atfoundation.git"
+  ;;     :version [ ">=1.0" "<=2.0" ]
+  ;;   }
+  ;; ]
+
+  :tasks {
+    :default {
+      :tool "atllbuild"
+      :sources ["src/**.swift"]
+      :name "FastString"
+      :output-type "static-library"
+      :publish-product true
+      :compile-options ["-enable-testing" "-g" "-O"]
+      :whole-module-optimization true
+    }
+
+    :check {
+      :tool "nop"
+      :dependencies ["run-tests"]
+    }
+
+    :build-tests {
+      :tool "atllbuild"
+      :sources ["tests/**.swift"]
+      :output-type "executable"
+      :name "tests"
+      :dependencies ["default"]
+      :xctestify true
+      :xctest-strict true
+      :link-with ["FastString.a"]
+      :whole-module-optimization true
+    }
+
+    :run-tests {
+      :tool "xctestrun"
+      :test-executable ".atllbuild/products/tests"
+      :dependencies ["build-tests"]
+    }
+  }
+)
