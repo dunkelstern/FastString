@@ -221,6 +221,12 @@ extension FastString: CustomStringConvertible {
     }
 }
 
+extension FastString: Hashable {
+    public var hashValue: Int {
+        return self.buffer.baseAddress!.hashValue
+    }
+}
+
 public func ==(lhs: FastString, rhs: FastString) -> Bool {
     if lhs.byteCount != rhs.byteCount {
         return false
