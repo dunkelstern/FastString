@@ -22,7 +22,7 @@ public class FastString {
         self.buffer = UnsafeMutableBufferPointer(start: memory, count: 0)
     }
 
-    private init(capacity: Int) {
+    internal init(capacity: Int) {
         let memory = UnsafeMutablePointer<UInt8>(allocatingCapacity: capacity + 1)
         memory[capacity] = 0
         self.buffer = UnsafeMutableBufferPointer(start: memory, count: capacity)
