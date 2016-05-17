@@ -1,13 +1,6 @@
 (package
   :name "FastString"
 
-  ;; :external-packages [
-  ;;   {
-  ;;     :url "https://github.com/AnarchyTools/atfoundation.git"
-  ;;     :version [ ">=1.0" "<=2.0" ]
-  ;;   }
-  ;; ]
-
   :tasks {
     :default {
       :tool "atllbuild"
