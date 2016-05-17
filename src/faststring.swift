@@ -29,6 +29,7 @@ public class FastString {
     }
 
     public init(_ string: String) {
+        // FIXME: use utf16 on osx
         let count = string.utf8.count
         let memory = UnsafeMutablePointer<UInt8>(allocatingCapacity: count + 1)
         var index = 0
@@ -147,6 +148,13 @@ public class FastString {
             }
             return nil
         }
+    }
+
+    public subscript(_ index: Int) -> UInt8? {
+        if index < self.buffer.count {
+            return self.buffer[index]
+        }
+        return nil
     }
 
     public func makeCharacterIterator(replaceInvalid: Character? = nil) -> AnyIterator<Character> {

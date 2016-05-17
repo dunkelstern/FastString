@@ -71,9 +71,7 @@ If you want to iterate over the content of the string you'll have two methods fo
 
 Iterating over bytes is **fast** so it is perfect for crafting parsers, etc. Iterating over `Character`s is relatively fast as UTF-8 validation is simple but it has the `Character`-Instanciation overhead.
 
-You have the option to subscript with an integer to get to the UTF-8 bytes too.
-
-(**TODO**: Subscript)
+You have the option to subscript with an integer to get to the UTF-8 bytes too as iterators may be slow.
 
 ## Substrings
 
